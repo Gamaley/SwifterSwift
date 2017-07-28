@@ -42,5 +42,15 @@ public extension Data {
         return String(data: self, encoding: encoding)
     }
     
+    /// - Parameter string: string.
+    /// append encoded string in utf8 to data (mostly used for mulitpart rest requests)
+    mutating func append(_ string: String) {
+	if let data = string.data(using: .utf8) {
+	    append(data)
+	} else {
+	    fatalError("Error: Can't parce string to data")
+	}
+     }
+
 }
 
